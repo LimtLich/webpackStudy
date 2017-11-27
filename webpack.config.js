@@ -9,5 +9,24 @@ module.exports = {
         contentBase: "./public",
         historyApiFallback: true,
         inline: true
+    },
+    module: {
+        rules: [{
+            test: /(\.jsx|\.js)$/,
+            loader: "babel-loader",
+            exclude: /node-modules/
+        }, {
+            test: /\.css$/,
+            use: [{
+                loader: "style-loader"
+            }, {
+                loader: "css-loader",
+                options:{
+                    modules:true
+                }
+            },{
+                loader:"postcss-loader"
+            }]
+        }]
     }
 }
